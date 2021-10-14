@@ -1,6 +1,29 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "schematics": {
+      "root": "packages/schematics",
+      "sourceRoot": "packages/schematics/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/schematics/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/schematics"],
+          "options": {
+            "jestConfig": "packages/schematics/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }
